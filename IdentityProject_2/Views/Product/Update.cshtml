@@ -1,0 +1,50 @@
+﻿@model IdentityProject_2.Models.Product
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @required = "" })
+    <br />
+    @Html.LabelFor(m => m.CategoryId)
+    @Html.DropDownListFor(m => m.CategoryId, (List<SelectListItem>)ViewBag.Categories, "Select a category", new { @class = "form-control", @required = "" })
+    <br />
+    @Html.LabelFor(m => m.Description)
+    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @required = "" })
+    <br />
+    @Html.LabelFor(m => m.ImageUrl)
+    <div style="display:flex;gap:20px">
+        <input type="file" name="ImageUrl" onchange="previewImage(event)" class="form-control"/>
+        <img style="width:100px; display:block" id="img" src="/Pictures/@ViewBag.img" alt="img" />
+    </div>
+    <br />
+    @Html.LabelFor(m => m.Price)
+    @Html.TextBoxFor(m => m.Price, new { @class = "form-control", @required = "" })
+    <br />
+    @Html.LabelFor(m => m.Stock)
+    @Html.TextBoxFor(m => m.Stock, new { @class = "form-control", @required = "" })
+    <br />
+    <div>
+        <button type="submit" class="btn btn-primary">Update product</button>
+        <button asp-controller="Product" asp-action="IndexPrdc" class="btn btn-danger">Cancel</button>
+    </div>
+</form>
+<script>
+    function previewImage(event) {
+        var img = document.getElementById('img');
+        var input = event.target;
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                img.src = e.target.result;
+                img.style.display = 'block';
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

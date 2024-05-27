@@ -1,0 +1,147 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- fontaweshome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <!-- css -->
+    <link rel="stylesheet" href="/Login/style.css" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-form {
+            background-color: #ddd;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px #999;
+            position: relative;
+        }
+
+            .login-form h2 {
+                font-size: 32px;
+                color: #333;
+                letter-spacing: 3px;
+                text-align: center;
+                font-family: cursive;
+            }
+
+        .form {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+            width: 300px;
+        }
+
+        .box {
+            position: relative;
+        }
+
+        .input {
+            width: 100%;
+            padding: 7px;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #444;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .label {
+            position: relative;
+            left: 7px;
+            top: -27px;
+            pointer-events: none;
+            color: #888;
+            transition: 0.3s;
+        }
+
+        .input:focus ~ .label,
+        .input:valid ~ .label {
+            top: -52px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .fa-solid {
+            position: absolute;
+            right: 7px;
+            bottom: 28px;
+            color: #444;
+        }
+
+        .loginBtn {
+            width: 100%;
+            padding: 7px;
+            border-radius: 5px;
+            font-size: 17px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+
+            .loginBtn:hover {
+                background-color: #444;
+                color: #fff;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-form">
+            <h2>Login</h2>
+            <form method="post" class="form">
+                <div class="box">
+                    <input type="text"
+                           class="input-username input"
+                           autocomplete="off"
+                           maxlength="30"
+                           required=""
+                           name="Username"/>
+
+                    <i class="fa-solid fa-user"></i>
+                    <label for="" class="label">Username</label>
+                </div>
+                <div class="box">
+                    <input type="password"
+                           class="input-password input"
+                           autocomplete="off"
+                           maxlength="10"
+                           required=""
+                           name="Password"/>
+                    <i class="fa-solid fa-lock"></i>
+                    <label for="" class="label">Password</label>
+                </div>
+                <div class="login-btn">
+                    <button class="loginBtn">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

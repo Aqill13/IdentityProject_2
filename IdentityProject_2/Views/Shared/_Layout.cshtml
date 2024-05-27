@@ -1,0 +1,55 @@
+﻿@{
+    string active = "active";
+    string currentAction = ViewContext.RouteData.Values["action"].ToString();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        header {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">WebSiteName</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="@((currentAction == "IndexCate")?active:"")">
+                        <a asp-controller="Category" asp-action="IndexCate">Category management</a>
+                    </li>
+                    <li class="@((currentAction == "IndexPrdc") ? active : "")">
+                        <a asp-controller="Product" asp-action="IndexPrdc">Product management</a>
+                    </li>
+                    <li><a asp-controller="Web" asp-action="Index">Web</a></li>
+                </ul>
+                <div style="margin-top:8px;">
+                    <a asp-controller="AdminLogin" asp-action="Logout" class="btn btn-warning">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

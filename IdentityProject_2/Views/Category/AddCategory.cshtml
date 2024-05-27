@@ -1,0 +1,35 @@
+﻿
+@model Category
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.Errors != null)
+{
+    @foreach (var err in ViewBag.Errors)
+    {
+        <div class="alert alert-danger">
+            <p>@err.ErrorMessage</p>
+        </div>
+    }
+}
+
+<form method="post">
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name, new { @class = "form-control"})
+    <br />
+    @Html.LabelFor(m => m.Description)
+    @Html.TextAreaFor(m => m.Description, new { @class = "form-control"})
+    <br />
+    <div>
+        <button type="submit" class="btn btn-primary">Add new category</button>
+        <button asp-controller="Category" asp-action="IndexCate" class="btn btn-danger">Cancel</button>
+    </div>
+</form>
+
+<script>
+    setTimeout(() => {
+        $(".alert").slideUp();
+    }, 1500)
+</script>

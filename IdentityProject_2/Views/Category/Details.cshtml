@@ -1,0 +1,38 @@
+﻿
+@model List<Product>
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>'<span class="text-primary">@ViewBag.cName</span>' category details</h1>
+<br />
+<a asp-controller="Category" asp-action="IndexCate" class="btn btn-danger">Back</a>
+<br />
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="bg-primary">ID</th>
+            <th class="bg-warning">Name</th>
+            <th class="bg-warning">Description</th>
+            <th class="bg-warning">ImageUrl</th>
+            <th class="bg-warning">Price</th>
+            <th class="bg-warning">Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="bg-info">@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.ImageUrl</td>
+                <td>@item.Price</td>
+                <td>@item.Stock</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

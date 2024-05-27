@@ -1,0 +1,62 @@
+﻿
+@model List<Category>
+@{
+    ViewData["Title"] = "IndexCate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* add message *@
+@if (ViewBag.AddMessage != null)
+{
+    <div class="alert alert-success">
+        <p>@ViewBag.AddMessage</p>
+    </div>
+}
+@* deleted message *@
+@if (ViewBag.DeleteMessage != null)
+{
+    <div class="alert alert-success">
+        <p>@ViewBag.DeleteMessage</p>
+    </div>
+}
+@* update message *@
+@if (ViewBag.UpdateMessage != null)
+{
+    <div class="alert alert-success">
+        <p>@ViewBag.UpdateMessage</p>
+    </div>
+}
+<a asp-controller="Category" asp-action="AddCategory" class="btn btn-primary">New category</a>
+<br />
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="bg-primary">ID</th>
+            <th class="bg-warning">Name</th>
+            <th class="bg-warning">Description</th>
+            <th class="bg-warning">Details</th>
+            <th class="bg-success">Update</th>
+            <th class="bg-danger">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td class="bg-info">@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td><a asp-controller="Category" asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Details</a></td>
+                <td><a asp-controller="Category" asp-action="Update" asp-route-id="@item.Id" class="btn btn-success">Update</a></td>
+                <td><a asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    setTimeout(() => {
+        $(".alert").slideUp();
+    }, 1500)
+</script>
